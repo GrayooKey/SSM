@@ -4,6 +4,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
+/*
+ * 该实体对应数据库中表user
+ * 数据库表中的列名跟实体中的属性名一致
+**/
 public class User {
 
     private  String id;
