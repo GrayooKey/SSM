@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--  1、namespace 必须是IUserDao接口的全类名 -->
+<mapper namespace="com.base.user.dao.IUserDao">
+
+    <insert id="addUser" parameterType="User">
+      insert into user(id,name,createDate) values(#{id},#{name},#{createDate})
+    </insert>
+
+    <delete id="deleteById" parameterType="String">
+        delete from user where id = #{id}
+    </delete>
+
+    <update id="updateUser" parameterType="User">
+        update user set name = #{name} where id = #{id}
+    </update>
+    
+    <select id="findById" parameterType="String" resultType="User">
+        select * from user where id = #{id}
+    </select>
+
+    <select id="findAll" resultType="User">
+        select * from user
+    </select>
+
+</mapper>

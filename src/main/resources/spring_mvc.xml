@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
+
+    <!-- 1、负责扫描带有注解的组件,并注册在spring容器中 -->
+    <context:component-scan base-package="com.base"/>
+
+
+    <!-- 2、视图解析器，将 handler(Controller)方法返回值 解析为 实际的物理视图 后再返回给前置控制器 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/"/>
+        <property name="suffix" value=".jsp"/>
+        <property name="contentType" value="text/html;charset=utf-8"/>
+    </bean>
+
+
+    <!-- 3、Spring MVC 有三大组件：处理器映射器(HandlerMapping)、处理器适配器(HandlerAdapter)、视图解析器(ViewResolver) -->
+    <!-- 其中的 处理映射器 和 和 处理适配器 可以通过配置 注解驱动 来代替，如下：-->
+    <mvc:annotation-driven></mvc:annotation-driven>
+
+
+
+
+
+    <!-- 4、以下是 Spring MVC 的其他配置 -->
+
+    <!-- 自定义异常处理 -->
+    <!--<bean class=""/>         自己写的异常处理类 -->
+
+    <!-- 自定义拦截器 -->
+    <!--<mvc:interceptors>
+        <bean class=""/>        自己写的拦截类
+    </mvc:interceptors>-->
+
+    <!-- 对静态资源的访问 -->
+    <!-- <mvc:resources mapping="" location="/"/>    根据实际情况填写静态资源的访问路径  -->
+
+
+</beans>

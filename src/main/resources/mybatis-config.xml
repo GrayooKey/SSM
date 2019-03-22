@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC
+        "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- 配置别名 如果在Mapper.xml文件中增删改成的返回值和参数值使用的事类全名，则没必要配置，本文使用-->
+    <!-- Mapper.xml中的 namespace 不能使用别名 -->
+    <typeAliases>
+        <typeAlias type="com.base.user.dao.IUserDao" alias="IUserDao" />
+        <typeAlias type="com.base.user.module.User" alias="User" />
+    </typeAliases>
+
+</configuration>
