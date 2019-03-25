@@ -22,26 +22,12 @@
     </servlet-mapping>
 
 
+    <!-- 不拦截某些文件（除了在 spring_mvc.xml配置文件 通过设置 <mvc:resources mapping="/**" location="/" /> 实现对静态资源的访问，也可在 web.xml 设置 不拦截 满足某些规则的文件 来实现对静态资源的访问，如下： ） -->
     <servlet-mapping>
         <servlet-name>default</servlet-name>
-        <url-pattern>*.css</url-pattern>
+        <url-pattern>/common/*</url-pattern>
     </servlet-mapping>
-
-    <servlet-mapping>
-        <servlet-name>default</servlet-name>
-        <url-pattern>*.js</url-pattern>
-    </servlet-mapping>
-
-    <servlet-mapping>
-        <servlet-name>default</servlet-name>
-        <url-pattern>*.jpg</url-pattern>
-    </servlet-mapping>
-
-    <servlet-mapping>
-        <servlet-name>default</servlet-name>
-        <url-pattern>*.gif</url-pattern>
-    </servlet-mapping>
-
+    
 
     <!-- 2、配置spring的核心配置文件(告知核心配置文件所在位置),才能成功启动spring容器 -->
     <context-param>

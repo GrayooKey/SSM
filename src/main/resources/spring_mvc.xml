@@ -8,7 +8,7 @@
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
 
-    <!-- 1、负责扫描带有注解的组件,并注册在spring容器中 -->
+    <!-- 1、负责扫描（Controller）带有注解的组件,并注册在spring容器中 -->
     <context:component-scan base-package="com.base"/>
 
 
@@ -25,21 +25,31 @@
     <mvc:annotation-driven></mvc:annotation-driven>
 
 
+    <!-- 4、对静态资源的访问 -->
+    <mvc:resources mapping="/**" location="/" />    <!-- 此时访问的是webapp根目录下的 除  WEB-INF(安全目录) 之外  的所有静态资源文件 -->
 
 
+    <!-- 5、自定义拦截器 -->
+    <!--
+        /** 的意思是所有文件夹及里面的子文件夹
+        /* 是所有文件夹，不含子文件夹
+        / 是web项目的根目录
+    -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>                       <!-- 此处表示要拦截的请求：所有请求 -->
+            <mvc:exclude-mapping path="/user/crud"/>        <!-- 此处表示需要排除拦截的地址：/user/crud -->
+            <bean id="MyInterceptor" class="com.plat.interceptor.MyInterceptor"/>       <!-- 这个类就是自定义的拦截器类 -->
+        </mvc:interceptor>
+    </mvc:interceptors>
 
-    <!-- 4、以下是 Spring MVC 的其他配置 -->
+
+    <!-- 6、以下是 Spring MVC 的其他配置 -->
 
     <!-- 自定义异常处理 -->
     <!--<bean class=""/>         自己写的异常处理类 -->
 
-    <!-- 自定义拦截器 -->
-    <!--<mvc:interceptors>
-        <bean class=""/>        自己写的拦截类
-    </mvc:interceptors>-->
 
-    <!-- 对静态资源的访问 -->
-    <!-- <mvc:resources mapping="" location="/"/>    根据实际情况填写静态资源的访问路径  -->
 
 
 </beans>
