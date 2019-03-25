@@ -6,6 +6,7 @@ import java.util.Date;
 
 /*
  * 
+ * 测试
  * 先在Mysql数据库中建个简单表 user
  * 该实体对应数据库中表user
  * 数据库表中的列名跟实体中的属性名一致
